@@ -51,7 +51,7 @@ function App() {
                 product.bascet.length > 0 ? "none" : "flex"
               }`}
             >
-              <img src="../public/images/illustration-empty-cart.svg" alt="" />
+              <img src="/images/illustration-empty-cart.svg" alt="" />
               <p className="your__card__default-title">
                 Your added items will appear here
               </p>
@@ -129,7 +129,7 @@ function App() {
               <div className="carboon-natural-info">
                 <div>
                   <img
-                    src="../public/images/icon-carbon-neutral.svg"
+                    src="/images/icon-carbon-neutral.svg"
                     width="20"
                     height="20"
                     alt=""

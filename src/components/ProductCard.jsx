@@ -39,7 +39,7 @@ export const ProductCard = ({ p }) => {
           }}
         >
           <img
-            src="../public/images/icon-add-to-cart.svg"
+            src="/images/icon-add-to-cart.svg"
             width="20"
             height="20"
             alt="shopping svg image"
