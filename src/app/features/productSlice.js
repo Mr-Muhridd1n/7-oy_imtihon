@@ -10,7 +10,13 @@ const updateTotel = (state) => {
   return { totalCount, totalPrice };
 };
 
-const initialState = { bascet: [], totalCount: 0, totalPrice: 0 };
+const saveLocalStore = (state) => {
+  localStorage.setItem("products", JSON.stringify(state));
+};
+
+const initialState = localStorage.getItem("products")
+  ? JSON.parse(localStorage.getItem("products"))
+  : { bascet: [], totalCount: 0, totalPrice: 0 };
 
 const product = createSlice({
   name: "product",
@@ -21,12 +27,14 @@ const product = createSlice({
       const { totalCount, totalPrice } = updateTotel(state);
       state.totalCount = totalCount;
       state.totalPrice = totalPrice;
+      saveLocalStore(state);
     },
     delProduct: (state, { payload }) => {
       state.bascet = state.bascet.filter((product) => product.id != payload);
       const { totalCount, totalPrice } = updateTotel(state);
       state.totalCount = totalCount;
       state.totalPrice = totalPrice;
+      saveLocalStore(state);
     },
     addProductCount: (state, { payload }) => {
       state.bascet = state.bascet.map((product) => {
@@ -39,6 +47,7 @@ const product = createSlice({
       const { totalCount, totalPrice } = updateTotel(state);
       state.totalCount = totalCount;
       state.totalPrice = totalPrice;
+      saveLocalStore(state);
     },
     delProductCount: (state, { payload }) => {
       state.bascet = state.bascet.map((product) => {
@@ -51,11 +60,13 @@ const product = createSlice({
       const { totalCount, totalPrice } = updateTotel(state);
       state.totalCount = totalCount;
       state.totalPrice = totalPrice;
+      saveLocalStore(state);
     },
     deleteAll: (state) => {
       state.bascet = [];
       state.totalCount = 0;
       state.totalPrice = 0;
+      localStorage.removeItem("products");
     },
   },
 });
